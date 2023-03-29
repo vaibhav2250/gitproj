@@ -1,0 +1,83 @@
+1.4 Program Logic:
+
+Binary search follows the divide and conquer approach in which the list is divided into two halves, and the item is compared with the middle element of the list. If the match is found then, the  location of the middle element is returned. Otherwise, we search into either of the halves depending upon the result produced through the match.
+
+Algorithm: Binary-Search (numbers[], x, l, r)
+
+if l = r then return l else
+
+m := ⌊(l + r) / 2⌋
+
+if x ≤ numbers[m] then
+
+return Binary-Search(numbers[], x, l, m) else
+
+return Binary-Search(numbers[], x, m+1, r)
+
+1.5 PROCEDURE:
+
+1. Create: Open Dev C++/C and write a program after that save the program with the .c extension.
+
+2. Compile: Alt + F9
+
+3. Execute: Ctrl + F10
+
+1.6 Code:
+
+#include <stdio.h>
+
+int main()
+
+{
+
+int c, first, last, middle, n, search, array[100];
+
+printf("Enter number of elements\n");
+
+ scanf("%d",&n);
+
+printf("Enter %d integers\n", n);
+
+for (c = 0; c < n; c++)
+
+scanf("%d",&array[c]);
+
+printf("Enter value to find\n");
+
+scanf("%d", &search);
+
+first = 0; last = n - 1;
+
+middle = (first+last)/2;
+
+while (first <= last) {
+
+if (array[middle] < search)
+
+first = middle + 1;
+
+else if (array[middle] == search)
+
+ {
+
+printf("%d found at location %d.\n", search, middle+1); break;
+
+}
+
+else
+
+last = middle - 1;
+
+middle = (first + last)/2;
+
+}
+
+if (first > last)
+
+printf("Not found! %d isn't present in the list.\n", search);
+
+return 0; 
+
+}
+
+ Linear search runs in ONo time. Whereas binary search produces the result in O(log n) time. Let TNo be the number of comparisons in worst-case in an array of elements.  Using this recurrence relation TNo=(logn) Therefore, binary search uses O(logn)time.
